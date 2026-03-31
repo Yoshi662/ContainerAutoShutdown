@@ -1,6 +1,5 @@
 using ContainerAutoShutdown;
 using ContainerAutoShutdown.Configuration;
-using ContainerAutoShutdown.Extensions;
 using ContainerAutoShutdown.Services;
 using Docker.DotNet;
 using Microsoft.Extensions.Options;
@@ -20,16 +19,9 @@ builder.Services.AddSingleton<IDockerClient>(sp =>
     return new DockerClientConfiguration(new Uri(shutdownOptions.DockerEndpoint)).CreateClient();
 });
 
-builder.Services.AddDockerHealthChecks();
 
 builder.Services.AddSingleton<IContainerMonitorService, ContainerMonitorService>();
 builder.Services.AddSingleton<IContainerShutdownService, ContainerShutdownService>();
-
-if (args.Contains("healthcheck", StringComparer.OrdinalIgnoreCase))
-{
-    var healthHost = builder.Build();
-    return await healthHost.RunHealthCheckAsync();
-}
 
 builder.Services.AddHostedService<Worker>();
 

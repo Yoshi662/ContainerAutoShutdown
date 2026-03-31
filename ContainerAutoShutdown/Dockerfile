@@ -25,7 +25,4 @@ COPY --from=publish /app/publish .
 # Run as root to access the Docker socket mounted from the host.
 USER root
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD dotnet ContainerAutoShutdown.dll -- healthcheck || exit 1
-
 ENTRYPOINT ["dotnet", "ContainerAutoShutdown.dll"]
