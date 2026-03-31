@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ContainerAutoShutdown.Tests/ContainerAutoShutdown.Tests.csproj" />
+  <Project Path="ContainerAutoShutdown/ContainerAutoShutdown.csproj" />
+</Solution>

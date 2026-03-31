@@ -1,0 +1,7 @@
+services:
+  ContainerAutoShutdown:
+    container_name: containerautoshutdown
+    image: containerautoshutdown:latest
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
